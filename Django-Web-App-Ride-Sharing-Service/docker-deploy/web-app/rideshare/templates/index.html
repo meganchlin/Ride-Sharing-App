@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Ride Share</h1>
+  <p>
+    Welcome to Ride Share
+  </p>
+  <p>Choose from the left navigation bar to continue</p>
+  <ul>
+    <li><strong>As a owner, you have  {{ num_rides }} rides </strong> </li>
+    <li><strong>As a driver, you have  {{ num_drivers}} rides </strong> </li>
+    <li><strong>As a sharer, you have  {{ num_sharers }} rides </strong> </li>
+  </ul>
+{% endblock %}

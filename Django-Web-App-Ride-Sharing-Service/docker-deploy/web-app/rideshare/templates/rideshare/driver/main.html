@@ -1,0 +1,150 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'rideshare/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+  {% bootstrap_javascript %}
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+</head>
+<body>
+<div class="content">
+  <div class="container py-3">
+    <div class="row">
+      <h2 class="font-weight-light mb-4 font-italic text-white">
+        <a href="{% url 'rideshare:driverEdit' %}" class="text-white d-flex align-items-center">
+          <i class="fa fa-user fa-lg me-2"></i>
+          <span>Driver Info</span>
+        </a>
+      </h2>
+      <div class="col-lg-9 mx-auto">
+        <h2 class="font-weight-light mb-4 font-italic text-white">Search for Open Rides</h2>
+        <div class="bg-white p-5 rounded shadow">
+          <form action="{% url 'rideshare:driverSearch' %}" method="get">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row">
+                  <input type="text" class="form-control search-slt" id="destination" name="destination" placeholder="Enter Destination">
+                </div>
+                <div class="row d-flex align-items-stretch">
+                  <div class="col-lg-6 col-md-6 col-sm-12 p-0 d-flex align-items-stretch">
+                    <div class="input-group date" id="datetimePicker" data-target-input="nearest">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#datetimePicker" name="arrival_time" placeholder="Earlist Arrival Date and Time" />
+                      <div class="input-group-append" data-target="#datetimePicker" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar text-center"></i></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-12 p-0">
+                    <input type="number" class="form-control search-slt" id="passenger_count" name="passenger_count" min="1"
+                     placeholder="Number of Passengers">
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-sm-12 p-0 bg-secondary text-center">
+                    <button id="button-addon1" type="submit" class="btn btn-link text-white"><i class="fa fa-search fa-lg"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="text-center mt-3 mb-3 text-white">
+      <h3>Confirmed Rides</h3>
+    </div>
+
+    {% for ride in rides %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="d-flex flex-column flex-lg-row">
+            <span class="avatar avatar-text rounded-3 me-4 mb-2  {% cycle 'avatar-0' 'avatar-1' 'avatar-2' 'avatar-3' 'avatar-4' %}">{{ forloop.counter }}</span>
+            <div class="row flex-fill">
+              <div class="col-sm-3">
+                <h4 class="h5">{{ride.destination_address}}</h4>
+                <span class="badge bg-warning">{{ride.required_arrival_time}}</span>
+              </div>
+              <div class="col-sm-6 py-2">
+                <span class="badge owner-badge fs-6">
+                  {{ride.owner.first_name}} <br>
+                  (passengers: {{ride.num_passengers}})
+                </span>
+                {% for sharer in ride.sharer_set.all %}
+                  <span class="badge sharer-badge fs-6">
+                    {{sharer.user.first_name}} <br>
+                    (passengers: {{sharer.num_passengers}})
+                  </span>
+                {% endfor %}
+              </div>
+              <div class="col-sm-1 text-lg-end py-2">
+                <a href="{% url 'rideshare:ride-detail' pk=ride.id %}" class="btn btn-secondary">Info</a>
+              </div>
+              <div class="col-sm-1 text-lg-end py-2">
+                <a href="{% url 'rideshare:updateRideStatus' ride_id=ride.id status='Complete'%}" class="btn btn-secondary">Complete</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="container">
+    <div class="text-center mt-3 mb-3 text-white">
+      <h3>Complete Rides</h3>
+    </div>
+
+    {% for ride in complete_rides %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="d-flex flex-column flex-lg-row">
+            <span class="avatar avatar-text rounded-3 me-4 mb-2  {% cycle 'avatar-0' 'avatar-1' 'avatar-2' 'avatar-3' 'avatar-4' %}">{{ forloop.counter }}</span>
+            <div class="row flex-fill">
+              <div class="col-sm-3">
+                <h4 class="h5">{{ride.destination_address}}</h4>
+                <span class="badge bg-warning">{{ride.required_arrival_time}}</span>
+              </div>
+              <div class="col-sm-7 py-2">
+                <span class="badge owner-badge fs-6">
+                  {{ride.owner.first_name}} <br>
+                  (passengers: {{ride.num_passengers}})
+                </span>
+                {% for sharer in ride.sharer_set.all %}
+                  <span class="badge sharer-badge fs-6">
+                    {{sharer.user.first_name}} <br>
+                    (passengers: {{sharer.num_passengers}})
+                  </span>
+                {% endfor %}
+              </div>
+              <div class="col-sm-1 text-lg-end py-2">
+                <a href="{% url 'rideshare:ride-detail' pk=ride.id %}" class="btn btn-secondary">Info</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+<script>
+  $(function () {
+      $('#datetimePicker').datetimepicker({
+          format: 'YYYY-MM-DD HH:mm',  // Customize the datetime format as needed
+      });
+  });
+</script>
+
+{% endblock %}

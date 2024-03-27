@@ -1,0 +1,37 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'rideshare/css/register.css' %}" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container" id="reg-cont">
+    <div class="title">Driver Registration</div>
+    <div class="content">
+      <form action="" method="post">
+        <div class="user-details">
+
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="input-box">
+              <span class="details"> {{ field.label }} </span>
+              {{ field }}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock %}

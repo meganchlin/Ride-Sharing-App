@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Destination: {{ ride.destination_address }}</h1>
+
+  <p><strong>Owner:</strong> <a href="">{{ ride.owner }}</a></p>
+  <!-- author detail link not yet defined -->
+  <p><strong>Destination:</strong> {{ ride.destination_address }}</p>
+  <p><strong>Status:</strong> {{ ride.get_status_display }}</p>
+  <p><strong>Number of passengers:</strong> {{ ride.num_passengers }}</p>
+  <p><strong>Shared:</strong> {{ ride.shared }}</p>
+  <p><strong>Driver:</strong> {{ ride.driver }}</p>
+  <p><strong>Vehicle type:</strong> {{ ride.vehicle_type }}</p>
+  <p><strong>Arrival time:</strong> {{ ride.required_arrival_time }}</p>
+  {% if is_owner %}
+    <a href="{% url 'rideshare:owner-edit' ride_id=ride.pk %}" class="btn btn-primary">Edit Ride</a>
+  {% endif %}
+{% endblock %}

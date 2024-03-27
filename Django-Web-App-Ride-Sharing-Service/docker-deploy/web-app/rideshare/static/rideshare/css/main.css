@@ -1,0 +1,151 @@
+
+body {
+  /*
+  background: #e8cbc0;
+  background: -webkit-linear-gradient(to right, #e8cbc0, #636fa4);
+  background: linear-gradient(to right, #e8cbc0, #636fa4);
+  */
+  height: 100vh;
+  background: #ffd89b;
+  background: -webkit-linear-gradient(to right, #ffd89b, #19547b);
+  background: linear-gradient(to right, #ffd89b, #19547b);
+
+}
+
+.bootstrap-select .bs-ok-default::after {
+  width: 0.3em;
+  height: 0.6em;
+  border-width: 0 0.1em 0.1em 0;
+  transform: rotate(45deg) translateY(0.5rem);
+}
+
+.btn.dropdown-toggle:focus {
+  outline: none !important;
+}
+
+.search-sec{
+  padding: 2rem;
+}
+.search-slt{
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+
+.wrn-btn{
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+
+@media (min-width: 992px){
+  .search-sec{
+      position: relative;
+      top: -114px;
+      background: rgba(26, 70, 104, 0.51);
+  }
+}
+
+@media (max-width: 992px){
+  .search-sec{
+      background: #1A4668;
+  }
+}
+
+.card {
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: 1rem;
+}
+
+.card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.5rem 1.5rem;
+}
+.avatar-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+}
+.rounded-3 {
+  border-radius: 0.5rem!important;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem!important;
+}
+.me-4 {
+  margin-right: 1.5rem!important;
+}
+
+.avatar-0 {
+  background-color: #ffd89b;
+}
+
+.avatar-1 {
+  background-color: #f08a5d;
+}
+
+.avatar-2 {
+  background-color: #6cb2eb;
+}
+
+.avatar-3 {
+  background-color: #cc8e35;
+}
+
+.avatar-4 {
+  background-color: #9c8c85;
+}
+
+.owner-badge {
+  background-color: #226b9c; /* Light blue color, for example */
+  color: #fff; /* White text for contrast */
+  /* Additional styling if needed */
+}
+
+.sharer-badge {
+  background-color: #f5c16e; /* Coral color, for example */
+  color: #fff; /* White text for contrast */
+  /* Additional styling if needed */
+}
+
+.input-group {
+  width: 40%;
+}
