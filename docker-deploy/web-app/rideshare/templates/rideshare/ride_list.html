@@ -1,6 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'rideshare/css/register.css' %}">
+</head>
 <div class="container" id="reg-cont">
   <div class="title">My Ride List</div>
   <div class="content">

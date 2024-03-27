@@ -6,12 +6,12 @@
     position: fixed;
     top: 0;
   }
-  
+
 body {
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
 .userTitle {
   color: #19547b;

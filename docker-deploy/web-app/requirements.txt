@@ -3,6 +3,7 @@ psycopg2
 django-bootstrap5
 django-bootstrap-v5
 django-bootstrap-select
+django-jquery
 sendgrid==6.8.0
 google-auth==2.27.0
 google_auth_oauthlib==1.2.0

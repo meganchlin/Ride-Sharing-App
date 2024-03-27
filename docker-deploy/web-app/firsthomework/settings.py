@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['web', 'vcm-38465.vm.duke.edu','127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['http://*.vcm-38465.vm.duke.edu:8000','http://*.127.0.0.1:8000', 'http://localhost:8000', 'http://0.0.0.0:8000']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rideshare.apps.RideshareConfig',
     'bootstrap5',
+    'jquery'
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'rideshare/css/register.css' %}">
+</head>
   <h1>Destination: {{ ride.destination_address }}</h1>
 
   <p><strong>Owner:</strong> <a href="">{{ ride.owner }}</a></p>

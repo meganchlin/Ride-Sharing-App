@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<html lang="en" dir="ltr">
 <head>
   <title>{% block title %}{% endblock %}</title>
   {% load static %}
@@ -18,7 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
 </head>
 <body>
-  <div class="content">
+  <div class="content" id="reg-cont">
   <div class="container py-3">
     <div class="row">
       <div class="col-lg-10 mx-auto">
@@ -180,6 +181,7 @@
   </div>
 </div>
 </body>
+</html>
 <script>
   $(function () {
       $('#datetimePickerEarliest').datetimepicker({
