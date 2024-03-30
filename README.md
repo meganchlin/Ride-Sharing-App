@@ -1,7 +1,5 @@
 # Django Web-App: Ride Sharing Service
 
-## Engineering Robust Software - Homework 1
-
 This web application is built using Django and provides functionalities for users to request, drive for, and join rides. It supports three roles:
 
 ### Ride Owner
