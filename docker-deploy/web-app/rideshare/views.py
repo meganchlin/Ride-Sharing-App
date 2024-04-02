@@ -218,6 +218,8 @@ class DriverView(LoginRequiredMixin):
                 status=RideStatus.OPEN.value,
                 special_requests=driver.special_vehicle_info,
                 destination_address__contains=destination,
+            ).exclude(
+                owner=driver.user
             )
             # .annotate(
             #     total_passengers=Coalesce(Sum('sharer__num_passengers'), Value(0), output_field=IntegerField())
@@ -368,6 +370,8 @@ class SharerView(LoginRequiredMixin):
                 status=RideStatus.OPEN.value,
                 destination_address__contains=destination,
                 shared=True
+            ).exclude(
+                owner=request.user
             )
 
             print(results)
